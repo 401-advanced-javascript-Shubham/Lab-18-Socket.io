@@ -3,7 +3,7 @@
 const io = require('socket.io-client');
 
 module.exports = io => {
-    const school = io.of('/teacher');
+  const school =  io.of('/school');
     school.on('connection', (socket) => {
       console.log('school', socket.id);
 
@@ -12,12 +12,12 @@ module.exports = io => {
         socket.join(room);
       });
 
-      socket.on('teachergrade', payload => {
-        socket.broadcast.emit('progress', payload);
+      socket.on('submission', payload => {
+        io.of('school').to('teacher').emit('grading',payload);
       });
     
-      socket.on('studentassignment', payload => {
-        socket.broadcast.emit('graded', payload);
+      socket.on('graded', payload => {
+        io.of('school').to('students').emit('graded', payload);
       });
     
     });

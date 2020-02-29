@@ -2,9 +2,8 @@
   "name": "Lab-18-Socket.io",
   "version": "1.0.0",
   "description": "## Socket.io",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
     "test-watch": "jest --watchAll --verbose",
     "test": "jest --verbose --coverage"
   },
